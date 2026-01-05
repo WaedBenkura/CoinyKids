@@ -48,27 +48,28 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col w-full bg-transparent">
 
-      <header 
+      <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out",
-          isScrolled 
-            ? "bg-slate-950/80 backdrop-blur-md shadow-lg shadow-purple-900/5 border-b border-slate-800 py-3" 
+          isScrolled
+            ? "bg-slate-950/80 backdrop-blur-md shadow-lg shadow-purple-900/5 border-b border-slate-800 py-3"
             : "bg-transparent py-6"
         )}
       >
-        <div className="container mx-auto px-6 flex items-center justify-between">
-          
+        {/* 1. أضفنا relative هنا لكي يتم التموضع بالنسبة لهذا الحاوي */}
+        <div className="container mx-auto px-6 flex items-center justify-between relative">
+
           {/* --- Logo Section --- */}
           <Link to="/home" className="flex items-center gap-2 group">
             {/* 3D Coin Image */}
             <div className="relative w-12 h-12 flex items-center justify-center">
-                <img 
-                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Coin.png" 
-                    alt="CoinyKids Logo" 
+                <img
+                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Coin.png"
+                    alt="CoinyKids Logo"
                     className="w-full h-full object-contain drop-shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12"
                 />
             </div>
-            
+
             {/* Text (Unchanged) */}
             <div className="flex flex-col justify-center -space-y-1">
               <span className={cn(
@@ -77,14 +78,16 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
               )}>
                 Coiny<span className="text-yellow-400">Kids</span>
               </span>
-              {/*<span className="text-xs font-bold text-yellow-400 tracking-widest uppercase">
-                Kids
-              </span>*/}
             </div>
           </Link>
           {/* ----------------------- */}
 
-          <NavigationMenu className="hidden md:flex">
+          {/* 
+             2. التعديل الرئيسي هنا:
+             تمت إضافة absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
+             وهذا يجبر القائمة أن تكون في منتصف الشاشة تماماً.
+          */}
+          <NavigationMenu className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <NavigationMenuList className="gap-8">
               {navItems.map((item) => (
                 <NavigationMenuItem key={item.path}>
@@ -93,20 +96,20 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
                       onClick={handleAboutClick}
                       className={cn(
                         "text-sm font-bold transition-colors duration-200",
-                        isDarkPage || isScrolled 
-                          ? "text-slate-300 hover:text-white" 
+                        isDarkPage || isScrolled
+                          ? "text-slate-300 hover:text-white"
                           : "text-slate-600 hover:text-purple-600"
                       )}
                     >
                       {item.label}
                     </button>
                   ) : (
-                    <Link 
-                      to={item.path} 
+                    <Link
+                      to={item.path}
                       className={cn(
                         "text-sm font-bold transition-colors duration-200",
-                        isDarkPage || isScrolled 
-                          ? "text-slate-300 hover:text-white" 
+                        isDarkPage || isScrolled
+                          ? "text-slate-300 hover:text-white"
                           : "text-slate-600 hover:text-purple-600"
                       )}
                     >
@@ -131,7 +134,7 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
               </div>
             ) : (
               <>
-                <Button 
+                <Button
                   variant="ghost"
                   onClick={() => navigate("/auth")}
                   className={cn(
@@ -141,7 +144,6 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
                 >
                   Log in
                 </Button>
-
               </>
             )}
 

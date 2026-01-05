@@ -157,9 +157,14 @@ export default function AdminDashboard() {
                     <User className="w-5 h-5 text-purple-400" />
                     Registered Users
                   </CardTitle>
-                  <Button onClick={loadUsers} variant="outline" className="border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white">
-                    Refresh Data
-                  </Button>
+<Button 
+    onClick={loadUsers} 
+    variant="outline" 
+    className="border-gray-300 text-gray-500 hover:bg-gray-200 hover:text-gray-700"
+> 
+    Refresh Data
+</Button>
+
                 </div>
               </CardHeader>
               <CardContent className="p-0">

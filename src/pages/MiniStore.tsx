@@ -141,8 +141,23 @@ export default function MiniStore() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isCartOpen, setIsCartOpen] = useState(false);
 
+  // --- بداية الكود الجديد ---
+  // 1. تحويل منتجات المستخدم لتناسب شكل بيانات المتجر
+  const userSellingItems = currentUser?.purchasedProducts
+    ?.filter((p: any) => p.type === "selling" && p.status === "Approved")
+    .map((p: any) => ({
+      id: p.id,
+      title: p.title,
+      price: p.price,
+      creator: currentUser.name, // اسم الطفل كبائع
+      category: p.category,
+      image: p.image,
+    })) || [];
+
+    const ALL_DISPLAY_PRODUCTS = [...PRODUCTS, ...userSellingItems];
+
   // Filter Logic
-  const filteredProducts = PRODUCTS.filter((product) => {
+    const filteredProducts = ALL_DISPLAY_PRODUCTS.filter((product) => {
     const matchesCategory = activeCategory === "All" || product.category === activeCategory;
     const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
@@ -151,16 +166,35 @@ export default function MiniStore() {
   // Cart Logic - using global cart context
   const addToCart = (product: typeof PRODUCTS[0]) => {
     addToCartGlobal(product);
-    // Use a more colorful and noticeable toast notification
-    toast.success("🌟 Added to your cart!", {
-      style: {
-        background: 'linear-gradient(135deg, #8b5cf6, #ec4899)',
-        color: 'white',
-        border: 'none',
-        fontSize: '18px',
-        fontWeight: 'bold',
-      },
-      duration: 3000
+    
+    // تصميم مخصص (Custom Toast) يظهر ككبسولة دائرية مع صورة المنتج
+    toast.custom((id) => (
+      <div 
+        className="flex items-center gap-3 bg-slate-900/95 backdrop-blur-xl border border-purple-500/50 p-2 pr-6 rounded-full shadow-[0_0_30px_-10px_rgba(168,85,247,0.6)] animate-in slide-in-from-bottom-5 fade-in duration-300"
+        onClick={() => toast.dismiss(id)}
+      >
+         {/* صورة المنتج دائرية */}
+         <div className="relative w-12 h-12 shrink-0">
+           <img 
+             src={product.image} 
+             alt={product.title} 
+             className="w-full h-full rounded-full object-cover border-2 border-purple-500"
+           />
+           {/* أيقونة صح صغيرة فوق الصورة */}
+           <div className="absolute -bottom-0.5 -right-0.5 bg-green-500 text-white rounded-full p-0.5 border-2 border-slate-900">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+           </div>
+         </div>
+         
+         {/* النصوص */}
+         <div className="flex flex-col">
+           <span className="font-bold text-white text-sm">Added to cart! 🛒</span>
+           <span className="text-xs text-slate-300 truncate max-w-[140px]">{product.title}</span>
+         </div>
+      </div>
+    ), {
+      duration: 2500,
+      position: 'bottom-center', // يظهر في الأسفل والمنتصف بشكل أجمل
     });
   };
 

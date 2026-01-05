@@ -146,6 +146,7 @@ export default function Profile() {
     }
     
     // Request parental approval for selling the item
+    // Request parental approval for selling the item
     requestParentalApproval(`Sell item: ${newItem.title}`, () => {
       // Callback executed after parental approval
       const newProduct = {
@@ -153,14 +154,16 @@ export default function Profile() {
         title: newItem.title,
         price: parseInt(newItem.price),
         category: newItem.category as Category,
-        status: "Pending", // New items start as pending
+        // -------------------------------------------------------
+        // -------------------------------------------------------
+        status: "Approved",
         image: selectedImage || "",
-        type: "selling" as const // Mark as selling type
+        type: "selling" as const 
       };
       
       // Add the new product to the user's selling items using the context function
       addSellingProduct(newProduct);
-      toast.success("Item submitted for approval!");
+      toast.success("Item listed in Mini Store successfully!");
     });
     
     setIsUploadOpen(false);
