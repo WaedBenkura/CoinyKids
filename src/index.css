@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Fredoka', 'Inter', sans-serif;
+  
+  /* ألوانك كما هي */
+  --color-sky-blue: oklch(0.775 0.11 236);
+  --color-mint-green: oklch(0.91 0.16 142);
+  --color-soft-pink: oklch(0.844 0.12 11);
+  --color-sunny-yellow: oklch(0.95 0.16 100);
+
+  /* Semantic Map */
+  --color-background: oklch(0.99 0.01 240);
+  --color-foreground: oklch(0.2 0.05 240);
+  
+  --color-card: oklch(1 0 0);
+  --color-card-foreground: oklch(0.2 0.05 240);
+  
+  --color-popover: oklch(1 0 0);
+  --color-popover-foreground: oklch(0.2 0.05 240);
+  
+  --color-primary: var(--color-sky-blue);
+  --color-primary-foreground: oklch(0.2 0.05 240);
+  
+  --color-secondary: var(--color-mint-green);
+  --color-secondary-foreground: oklch(0.2 0.05 142);
+  
+  --color-muted: oklch(0.96 0.02 240);
+  --color-muted-foreground: oklch(0.5 0.05 240);
+  
+  --color-accent: var(--color-soft-pink);
+  --color-accent-foreground: oklch(0.2 0.05 11);
+  
+  --color-destructive: oklch(0.6 0.2 20);
+  --color-border: oklch(0.9 0.05 240);
+  --color-input: oklch(0.9 0.05 240);
+  --color-ring: var(--color-sky-blue);
+
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-2xl: 2.5rem;
+}
+
+@layer base {
+  html {
+    font-family: 'Fredoka', sans-serif;
+  }
+  
+  /* التغيير الجذري هنا: فرض اللون الداكن على الـ body */
+  body {
+    background-color: #020617 !important; /* هذا كود slate-950 */
+    color: white !important; /* النصوص بيضاء افتراضياً */
+    @apply antialiased;
+  }
+}
