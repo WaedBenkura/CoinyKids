@@ -237,7 +237,7 @@ export default function MiniStore() {
 
               <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
                 <SheetTrigger asChild>
-                  <Button className="relative h-12 w-12 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 border-none shadow-lg shadow-purple-900/20">
+                  <Button className="relative h-12 w-12 rounded-full bg-gradient-to-r from-purple-400 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 border-none shadow-lg shadow-purple-900/20">
                     <ShoppingCart className="w-5 h-5 text-white" />
                     {cart.length > 0 && (
                       <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-slate-950">
