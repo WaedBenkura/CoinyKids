@@ -2,19 +2,17 @@ import { Link, useNavigate, useLocation } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu"
 import { cn } from "@/lib/utils"
-import { Menu, ArrowRight, Coins, User } from "lucide-react"
+import { Menu, Coins, User } from "lucide-react"
 import { useState, useEffect } from "react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Footer } from "@/layouts/Footer"
 import { useUserAuth } from "@/contexts/UserAuthContext"
-import { useGlobalCoin } from "@/contexts/GlobalCoinContext"
 
 export function PublicLayout({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate()
   const location = useLocation()
   const [isScrolled, setIsScrolled] = useState(false)
-  const { currentUser, isAuthenticated, logout } = useUserAuth()
-  const { balance } = useGlobalCoin()
+  const { currentUser, isAuthenticated } = useUserAuth()
   
   const path = location.pathname.replace(/\/+$/, "");
   

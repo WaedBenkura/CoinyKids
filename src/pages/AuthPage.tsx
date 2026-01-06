@@ -13,15 +13,10 @@ import { useUserAuth } from "@/contexts/UserAuthContext";
 import { toast } from "sonner";
 import { 
   Sparkles, 
-  LogIn, 
-  UserPlus, 
-  Baby, 
   Lock, 
   Mail, 
-  ArrowRight,
   Rocket,
   ShieldCheck,
-  Gamepad2,
   TrendingUp,
   User
 } from "lucide-react";
