@@ -24,7 +24,7 @@ function App() {
       rejectAction 
     } = useParentalApproval();
     
-    const { currentUser } = useUserAuth();
+    //const { currentUser } = useUserAuth();
 
     return (
       <>
