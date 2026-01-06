@@ -9,7 +9,7 @@ import { Toaster } from "@/components/ui/sonner"
 import { GlobalCoinProvider } from "@/contexts/GlobalCoinContext"
 import { ParentalApprovalProvider, useParentalApproval } from "@/contexts/ParentalApprovalContext";
 import { DeviceSecurityProvider } from "@/contexts/DeviceSecurityContext";
-import { UserAuthProvider, useUserAuth } from "@/contexts/UserAuthContext";
+import { UserAuthProvider } from "@/contexts/UserAuthContext";
 import { CartProvider } from "@/contexts/CartContext";
 import { ParentalApprovalModal } from "@/components/ui/ParentalApprovalModal";
 import { ProtectedRoute } from "@/components/RouteProtector";
