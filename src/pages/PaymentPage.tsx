@@ -2,13 +2,13 @@ import { PublicLayout } from "@/layouts/PublicLayout"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Coins, CreditCard, History } from "lucide-react"
+import { Coins,  History } from "lucide-react"
 import { useParentalApproval } from "@/contexts/ParentalApprovalContext";
 import { useDeviceSecurity } from "@/contexts/DeviceSecurityContext";
 import { toast } from "sonner";
 
 export default function PaymentPage() {
-  const { requestParentalApproval, approveAction } = useParentalApproval();
+  const { requestParentalApproval } = useParentalApproval();
   const { checkBehavior } = useDeviceSecurity();
   
   const packages = [

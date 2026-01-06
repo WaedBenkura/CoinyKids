@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetFooter } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Search, ShoppingCart, Filter, Plus, Trash2, Coins, Sparkles, User, ShoppingBag } from "lucide-react";
+import { Search, ShoppingCart, Filter, Plus, Trash2, Coins,  User, ShoppingBag } from "lucide-react";
 import { Particles } from "@/components/ui/particles";
 import { useGlobalCoin } from "@/contexts/GlobalCoinContext";
 import { useParentalApproval } from "@/contexts/ParentalApprovalContext";

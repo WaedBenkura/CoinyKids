@@ -13,7 +13,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"; // Added missing Tabs import
 import { Particles } from "@/components/ui/particles";
-import { useGlobalCoin } from "@/contexts/GlobalCoinContext";
 import { useParentalApproval } from "@/contexts/ParentalApprovalContext";
 import { useDeviceSecurity } from "@/contexts/DeviceSecurityContext";
 import { useUserAuth } from "@/contexts/UserAuthContext";
@@ -23,13 +22,9 @@ import {
   Coins, 
   Plus, 
   Package, 
-  Clock, 
-  CheckCircle2, 
   Upload,
   Wallet,
-  ShieldCheck,
   ImageIcon,
-  Lock,
   LogIn
 } from "lucide-react";
 
@@ -50,10 +45,10 @@ const FloatingCoin = ({ delay, x, y, size = 60 }: { delay: number, x: string, y:
 );
 
 // --- Types ---
-type ProductStatus = "Approved" | "Pending";
+//type ProductStatus = "Approved" | "Pending";
 type Category = "Toys" | "Handmade" | "Art" | "Game";
 
-interface Product {
+/*interface Product {
   id: number;
   title: string;
   price: number;
@@ -61,11 +56,11 @@ interface Product {
   status: ProductStatus;
   image: string;
   type: "selling" | "purchased";
-}
+}*/
 
 export default function Profile() {
   const navigate = useNavigate();
-  const { requestParentalApproval, approveAction } = useParentalApproval();
+  const { requestParentalApproval } = useParentalApproval();
   const { checkBehavior } = useDeviceSecurity();
   const { currentUser, isAuthenticated, logout, addSellingProduct } = useUserAuth();
   

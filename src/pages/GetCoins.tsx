@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { useNavigate } from "react-router-dom";
 import { PublicLayout } from "@/layouts/PublicLayout";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,16 +15,13 @@ import {
   Brain, 
   Coins, 
   Trophy, 
-  Clock, 
   ArrowRight,
   X,
   CheckCircle,
   AlertCircle,
-  LogIn
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { useGlobalCoin } from "@/contexts/GlobalCoinContext";
-import { useParentalApproval } from "@/contexts/ParentalApprovalContext";
 import { useUserAuth } from "@/contexts/UserAuthContext";
 
 // --- بيانات الفيديوهات (روابط مباشرة MP4 للتحكم في انتهاء الفيديو) ---
@@ -122,7 +119,7 @@ const FloatingCoin = ({ delay, x, y, size = 60, className }: { delay: number, x:
 export default function GetCoins() {
   const navigate = useNavigate();
   const { updateBalance } = useGlobalCoin(); // Keep for compatibility but won't use for coin updates
-  const { requestParentalApproval } = useParentalApproval();
+  //const { requestParentalApproval } = useParentalApproval();
   const { currentUser, isAuthenticated, updateUserCoins } = useUserAuth();
   
   // Ref to track the currently selected video

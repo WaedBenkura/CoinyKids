@@ -17,7 +17,6 @@ import {
   Star
 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Particles } from "@/components/ui/particles";
 

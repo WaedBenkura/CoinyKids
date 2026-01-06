@@ -8,7 +8,6 @@ import { FAQChapter } from "@/components/sections/FAQChapter"
 import { AboutChapter } from "@/components/sections/AboutChapter"
 import { Particles } from "@/components/ui/particles"
 import { motion } from "motion/react"
-import { useParentalApproval } from "@/contexts/ParentalApprovalContext"
 
 // مكون العملة العائمة (يتم تعريفه هنا ليظهر فوق الخلفية وتحت الأقسام)
 const FloatingCoin = ({ delay, x, y, size = 60, className }: { delay: number, x: string, y: string, size?: number, className?: string }) => (

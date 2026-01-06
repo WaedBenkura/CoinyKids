@@ -8,7 +8,6 @@ import { Badge } from "@/components/ui/badge"
 import { Particles } from "@/components/ui/particles"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { ArrowRight, ChevronDown, Coins, PiggyBank, Star } from "lucide-react"
-import { useParentalApproval } from "@/contexts/ParentalApprovalContext"
 
 // Floating Coin Component for background animation
 const FloatingCoin = ({ 
@@ -50,7 +49,7 @@ const FloatingCoin = ({
 
 export function HeroChapter() {
   const navigate = useNavigate()
-  const { requestParentalApproval } = useParentalApproval();
+  //const { requestParentalApproval } = useParentalApproval();
   // State for opening/closing dialog
   const [isHowItWorksOpen, setIsHowItWorksOpen] = useState(false)
 
